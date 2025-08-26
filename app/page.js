@@ -1,13 +1,8 @@
-"use client";
+'use client';
+import React, { useState } from 'react';
 
-import React, { useState } from "react";
-
-export default function Page() {
-  return <Calculator />;
-}
-
-function Calculator() {
-  const [display, setDisplay] = useState("0");
+export default function Calculator() {
+  const [display, setDisplay] = useState('0');
   const [previousValue, setPreviousValue] = useState(null);
   const [operation, setOperation] = useState(null);
   const [waitingForOperand, setWaitingForOperand] = useState(false);
@@ -17,21 +12,21 @@ function Calculator() {
       setDisplay(String(num));
       setWaitingForOperand(false);
     } else {
-      setDisplay(display === "0" ? String(num) : display + num);
+      setDisplay(display === '0' ? String(num) : display + num);
     }
   };
 
   const inputDecimal = () => {
     if (waitingForOperand) {
-      setDisplay("0.");
+      setDisplay('0.');
       setWaitingForOperand(false);
-    } else if (display.indexOf(".") === -1) {
-      setDisplay(display + ".");
+    } else if (display.indexOf('.') === -1) {
+      setDisplay(display + '.');
     }
   };
 
   const clear = () => {
-    setDisplay("0");
+    setDisplay('0');
     setPreviousValue(null);
     setOperation(null);
     setWaitingForOperand(false);
@@ -56,15 +51,15 @@ function Calculator() {
 
   const calculate = (firstValue, secondValue, operation) => {
     switch (operation) {
-      case "+":
+      case '+':
         return firstValue + secondValue;
-      case "-":
+      case '-':
         return firstValue - secondValue;
-      case "×":
+      case '×':
         return firstValue * secondValue;
-      case "÷":
+      case '÷':
         return firstValue / secondValue;
-      case "=":
+      case '=':
         return secondValue;
       default:
         return secondValue;
@@ -83,7 +78,7 @@ function Calculator() {
     }
   };
 
-  const Button = ({ onClick, className = "", children, ...props }) => (
+  const Button = ({ onClick, className = '', children, ...props }) => (
     <button
       onClick={onClick}
       className={`h-16 text-xl font-semibold rounded-lg transition-all duration-150 active:scale-95 hover:opacity-80 ${className}`}
@@ -100,9 +95,7 @@ function Calculator() {
           {/* Display */}
           <div className="bg-black/50 rounded-xl p-6 mb-4 border border-white/10">
             <div className="text-right text-4xl font-light text-white min-h-12 flex items-center justify-end overflow-hidden">
-              {display.length > 10
-                ? parseFloat(display).toExponential(5)
-                : display}
+              {display.length > 10 ? parseFloat(display).toExponential(5) : display}
             </div>
           </div>
 
@@ -117,9 +110,9 @@ function Calculator() {
             </Button>
             <Button
               onClick={() => {
-                if (display !== "0") {
+                if (display !== '0') {
                   const newDisplay = display.slice(0, -1);
-                  setDisplay(newDisplay === "" ? "0" : newDisplay);
+                  setDisplay(newDisplay === '' ? '0' : newDisplay);
                 }
               }}
               className="bg-gray-600 hover:bg-gray-700 text-white"
@@ -127,7 +120,7 @@ function Calculator() {
               ⌫
             </Button>
             <Button
-              onClick={() => performOperation("÷")}
+              onClick={() => performOperation('÷')}
               className="bg-orange-600 hover:bg-orange-700 text-white"
             >
               ÷
@@ -153,7 +146,7 @@ function Calculator() {
               9
             </Button>
             <Button
-              onClick={() => performOperation("×")}
+              onClick={() => performOperation('×')}
               className="bg-orange-600 hover:bg-orange-700 text-white"
             >
               ×
@@ -179,8 +172,8 @@ function Calculator() {
               6
             </Button>
             <Button
-              onClick={() => performOperation("-")}
-              className="bg-orange-700 hover:bg-orange-700 text-white"
+              onClick={() => performOperation('-')}
+              className="bg-orange-600 hover:bg-orange-700 text-white"
             >
               −
             </Button>
@@ -205,7 +198,7 @@ function Calculator() {
               3
             </Button>
             <Button
-              onClick={() => performOperation("+")}
+              onClick={() => performOperation('+')}
               className="bg-orange-600 hover:bg-orange-700 text-white"
             >
               +
@@ -240,4 +233,4 @@ function Calculator() {
       </div>
     </div>
   );
-}
+}  
