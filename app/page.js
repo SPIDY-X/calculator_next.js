@@ -180,7 +180,7 @@ function Calculator() {
             </Button>
             <Button
               onClick={() => performOperation("-")}
-              className="bg-orange-600 hover:bg-orange-700 text-white"
+              className="bg-orange-700 hover:bg-orange-700 text-white"
             >
               −
             </Button>
